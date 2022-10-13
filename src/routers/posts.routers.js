@@ -1,6 +1,10 @@
+import postSignup from '../controllers/postSignup.js';
+import express from 'express';
+
+
 const routPosts = express.Router();
 
-routPosts.post("/signup");
+routPosts.post("/signup", postSignup);
 
 //routPosts.post("/signin")
 

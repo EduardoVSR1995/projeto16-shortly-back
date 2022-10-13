@@ -1,15 +1,14 @@
 import express from 'express';
 
 
-const routerGets = express.Router();
+const routGets = express.Router();
 
+//routGets.get("/urls/:id");
 
-routerGets.get("/urls/:id");
+//routGets.get("/urls/open/:shortUrl");
 
-//routerGets.get("/urls/open/:shortUrl");
+//routGets.get("/users/me");
 
-//routerGets.get("/users/me");
+//routGets.get("/ranking")
 
-//routerGets.get("/ranking")
-
-export default routerGets;
+export default routGets;
