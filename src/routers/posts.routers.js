@@ -1,5 +1,6 @@
 import signupValidation from '../middlewares/signupValidation.js';
 import signinValidation from '../middlewares/signinValidation.js';
+import postUrlsShorten from '../controllers/postUrlsShorten.js';
 import postSignup from '../controllers/postSignup.js';
 import postSignin from '../controllers/postSignin.js';
 import express from 'express';
@@ -11,6 +12,6 @@ routPosts.post("/signup", signupValidation, postSignup);
 
 routPosts.post("/signin", signinValidation, postSignin)
 
-//routPosts.post("/urls/shorten" )
+routPosts.post("/urls/shorten", postUrlsShorten)
 
 export default routPosts;

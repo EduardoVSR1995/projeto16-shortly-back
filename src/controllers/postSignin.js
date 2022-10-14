@@ -22,7 +22,6 @@ export default async function(req, res){
         res.send({token: token}).status(200);
     
     } catch (error) {
-        console.log(error)
         res.sendStatus(400);
     }
 
