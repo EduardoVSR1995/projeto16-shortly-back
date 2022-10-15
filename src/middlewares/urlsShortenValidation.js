@@ -1,10 +1,6 @@
 import {urlShortenSchema, authorizationSchema} from '../schemas/schemas.js';
 
-export default function(req, res, next){
-      
-
-    try {
-        
+export default function(req, res, next){        
         const authorization = authorizationSchema.validate({authorization: req.headers.authorization},{abortEarly: false})
         
         if (authorization.error) {
@@ -25,7 +21,4 @@ export default function(req, res, next){
     
         next();
 
-    } catch (error) {
-        return res.sendStatus(422)
-    }
 }
