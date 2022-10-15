@@ -1,9 +1,4 @@
-import joi from "joi";
-
-const signinSchema = joi.object({
-    email: joi.string().pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/).required(),
-    password:joi.string().pattern(/^[a-zA-Zà-úÀ-Ú0-9]/).required(),
-})
+import {signinSchema} from '../schemas/schemas.js';
 
 export default function(req, res, next){
 
