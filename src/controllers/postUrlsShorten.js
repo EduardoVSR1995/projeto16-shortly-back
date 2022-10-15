@@ -10,7 +10,8 @@ export default async function(req, res){
 
     const shortUrl = nanoid(8)
 
-    console.log(token)
+    shortUrl.replace(/'\/'/g,"")
+
     try {
         
         const rows = await userRepository.getItem(`sessions`,"token", token, true)

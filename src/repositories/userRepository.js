@@ -22,7 +22,7 @@ export async function getItem(localItens , categori, iten,select){
 
         if(select){
 
-            const {rows} = await connection.query(`SELECT * FROM ${localItens} WHERE ${categori} = $1`,[iten])
+            const {rows} = await connection.query(`SELECT * FROM ${localItens} WHERE "${categori}" = $1`,[iten])
             
             return rows;
         }
@@ -48,3 +48,17 @@ export async function getList(table ,value){
     return error;    
   }
 }
+
+export async function updateIten(table ,colun ,value, id){
+
+    try {
+      
+      const promis = await connection.query(`UPDATE ${table} SET "${colun}" = ${value} WHERE id = ${id};`)
+  
+      return promis.rows;
+      
+    } catch (error) {
+      return error;    
+    }
+  }
+  
