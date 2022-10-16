@@ -1,3 +1,4 @@
+import deletes from './routers/delete.routers.js';
 import posts from './routers/posts.routers.js';
 import gets from './routers/gets.router.js';
 import express from 'express';
@@ -12,6 +13,8 @@ app.use(cors())
 
 app.use(posts);
 
-app.use(gets)
+app.use(gets);
+
+app.use(deletes);
 
 app.listen(process.env.PORT , ()=> console.log(`Server listening on port ${process.env.PORT}. `) )

@@ -8,16 +8,14 @@ export default async function(req, res){
     
     const nanoid = customAlphabet(url , 10)
 
-    const shortUrl = nanoid(8)
+    const short = nanoid(8)
 
-    shortUrl.replace(/'\/'/g,"")
+    const shortUrl = short.replace(/[^0-9a-zA-Z]/g,"")
 
     try {
         
-        const rows = await userRepository.getItem(`sessions`,"token", token, true)
+        const rows = await userRepository.getItem(`sessions`,`token`, token, true)
         
-        console.log(rows)
-
         if(rows.length===0) return res.sendStatus(401);
 
         const obj = await userRepository.insert(`shortens( url , "shortUrl", "visitCount")`, [url, shortUrl, 0])
