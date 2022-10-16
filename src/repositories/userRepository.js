@@ -82,7 +82,7 @@ export async function verifiIten(user, shortId){
       const promis = await connection.query(
         `SELECT "usersShortens".*
             FROM "usersShortens" 
-            WHERE  "usersShortens"."usersId" = ${user} AND "usersShortens"."shortensId" = ${shortId};`)
+            WHERE  "usersShortens"."usersId" = $1 AND "usersShortens"."shortensId" = $2;`,[user,shortId])
   
       return promis;
       
@@ -110,8 +110,8 @@ try {
                 ON "usersShortens"."shortensId" = shortens.id
             JOIN users
                 ON "usersShortens"."usersId" = users.id
-            WHERE "usersShortens"."usersId" = ${user}
-                ;`)
+            WHERE "usersShortens"."usersId" = $1
+                ;`,[user])
 
     return promis;
     
