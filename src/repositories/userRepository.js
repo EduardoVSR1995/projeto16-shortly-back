@@ -112,7 +112,6 @@ try {
                 ON "usersShortens"."usersId" = users.id
             WHERE "usersShortens"."usersId" = $1
                 ;`,[user])
-
     return promis;
     
 } catch (error) {
@@ -155,13 +154,12 @@ export async function timeDel(){
         console.log(value.createdAt.getTime() , value.id , Date.now())
 
         if( Number(Date.now() - value.createdAt.getTime()) > 360000 ){
-        
-
-      await deleteIten('sessions', "id", value.id)} })
+        await deleteIten('sessions', "id", value.id)} 
+      })
 
       
   } catch (error) {
-      
+      console.log(error)
   }
 
 

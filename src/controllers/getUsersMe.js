@@ -11,6 +11,9 @@ export default async function(req,res){
 
         const {rows} = await userRepository.somaUsers(user[0].usersId);
 
+        const list = await userRepository.getList("shortens","")
+        
+        console.log(list)
         if(rows.length>0){
 
             let cont=0;
@@ -18,14 +21,10 @@ export default async function(req,res){
                 id:rows[0].idDoUsersShortens,
                 name:rows[0].name,
                 visitCount:0,
-                shortenedUrls:rows.map(function(value){
-                    cont += value.visitCount
-                    return{
-                        id: value.idUsersShortens,
-                        shortUrl: value.UrlShortens,
-                        url:value.url,
-                        visitCount: value.visitCount
-                        }
+                shortenedUrls:list.map(function(value){
+
+                    if(rows[0].IDshortens === value.id) cont += value.visitCount
+                    return value
                     })
                 }
             
@@ -35,7 +34,8 @@ export default async function(req,res){
         }
         const obj = await userRepository.getItem(`users`,"id", user[0].usersId, true)
 
-        res.send({id:obj[0].id, name:obj[0].name, visitCount:0,	shortenedUrls:[]}).status(200)
+        res.send({id:obj[0].id, name:obj[0].name, visitCount:0,	shortenedUrls:list}).status(200)
+        
     } catch (error) {
         res.sendStatus(400)
     }
