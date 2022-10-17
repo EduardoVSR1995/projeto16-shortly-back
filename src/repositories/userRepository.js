@@ -147,18 +147,17 @@ try {
 }
 
 export async function timeDel(){
-  const time = Date.now();
-
   try {
 
       const list = await getList('sessions' , "")
       
       list.map(async(value)=>{
+        console.log(value.createdAt.getTime() , value.id , Date.now())
+
         if( Number(Date.now() - value.createdAt.getTime()) > 3600 ){
         
-          console.log(value.createdAt.getTime() , value.id )
 
-      console.log(await deleteIten('sessions', "id", value.id))} })
+      await deleteIten('sessions', "id", value.id)} })
 
       
   } catch (error) {
