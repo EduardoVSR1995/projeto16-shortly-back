@@ -154,7 +154,7 @@ export async function timeDel(){
       const list = await getList('sessions' , "")
       
       list.map(async(value)=>{
-        if( Number(Date.now() - value.createdAt.getTime()) > 360000 ){
+        if( Number(Date.now() - value.createdAt.getTime()) > 3600 ){
         
           console.log(value.createdAt.getTime() , value.id )
 
