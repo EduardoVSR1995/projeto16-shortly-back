@@ -11,9 +11,8 @@ export default async function(req,res){
 
         const {rows} = await userRepository.somaUsers(user[0].usersId);
 
-        const list = await userRepository.getList("shortens","")
+        const list = await userRepository.getList("shortens",` ORDER BY "visitCount" DESC`)
         
-        console.log(list)
         if(rows.length>0){
 
             let cont=0;

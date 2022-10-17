@@ -16,8 +16,6 @@ export default async function(req, res){
 
         await userRepository.updateIten("shortens", "visitCount", obj[0].visitCount+1 , obj[0].id )
 
-        console.log(obj , shortUrl)
-
         res.redirect(obj[0].url);
         
     } catch (error) {

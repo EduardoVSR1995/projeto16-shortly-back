@@ -40,7 +40,7 @@ export async function getList(table ,value){
 
   try {
     
-    const promis = await connection.query(`SELECT * FROM ${table} ${value};`)
+    const promis = await connection.query(`SELECT * FROM ${table} ${value} ;`)
 
     return promis.rows;
     
@@ -111,8 +111,9 @@ try {
             JOIN users
                 ON "usersShortens"."usersId" = users.id
             WHERE "usersShortens"."usersId" = $1
+
                 ;`,[user])
-    return promis;
+                return promis;
     
 } catch (error) {
     return error;    
@@ -151,7 +152,6 @@ export async function timeDel(){
       const list = await getList('sessions' , "")
       
       list.map(async(value)=>{
-        console.log(value.createdAt.getTime() , value.id , Date.now())
 
         if( Number(Date.now() - value.createdAt.getTime()) > 360000 ){
         await deleteIten('sessions', "id", value.id)} 

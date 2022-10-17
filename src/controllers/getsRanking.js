@@ -6,7 +6,6 @@ export default async function(req, res){
 
             res.send(rows).status(200)
         } catch (error) {
-            console.log(error)
             res.sendStatus(400)
         }
 }
