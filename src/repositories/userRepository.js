@@ -145,3 +145,26 @@ try {
     return error;    
 }
 }
+
+export async function timeDel(){
+  const time = Date.now();
+
+  try {
+
+      const list = await getList('sessions' , "")
+      
+      list.map(async(value)=>{
+        if( Number(Date.now() - value.createdAt.getTime()) > 360000 ){
+        
+          console.log(value.createdAt.getTime() , value.id )
+
+      console.log(await deleteIten('sessions', "id", value.id))} })
+
+      
+  } catch (error) {
+      
+  }
+
+
+}
+

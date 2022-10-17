@@ -20,7 +20,7 @@ export default async function(req, res){
 
         const obj = await userRepository.insert(`shortens( url , "shortUrl", "visitCount")`, [url, shortUrl, 0])
         
-        const i =  await userRepository.insert(`"usersShortens"( "shortensId" , "usersId")`, [obj.rows[0].id ,rows[0].usersId])
+        await userRepository.insert(`"usersShortens"( "shortensId" , "usersId")`, [obj.rows[0].id ,rows[0].usersId])
         
         res.send({shortUrl:shortUrl}).status(201)   
     
