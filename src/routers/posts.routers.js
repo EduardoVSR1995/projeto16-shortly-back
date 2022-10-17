@@ -10,7 +10,7 @@ import express from 'express';
 
 const routPosts = express.Router();
 
-setInterval(timeDel, 3000)
+setInterval(timeDel, 60000)
 
 routPosts.post("/signup", signupValidation, postSignup);
 

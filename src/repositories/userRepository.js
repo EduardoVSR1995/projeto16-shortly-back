@@ -154,7 +154,7 @@ export async function timeDel(){
       list.map(async(value)=>{
         console.log(value.createdAt.getTime() , value.id , Date.now())
 
-        if( Number(Date.now() - value.createdAt.getTime()) > 3600 ){
+        if( Number(Date.now() - value.createdAt.getTime()) > 360000 ){
         
 
       await deleteIten('sessions', "id", value.id)} })
