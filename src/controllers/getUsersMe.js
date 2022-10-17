@@ -9,7 +9,7 @@ export default async function(req,res){
 
         if(user.length===0) return res.sendStatus(404);
 
-        const {rows} = await userRepository.somaUsers(user[0].id);
+        const {rows} = await userRepository.somaUsers(user[0].usersId);
 
         if(rows.length>0){
 
@@ -37,7 +37,6 @@ export default async function(req,res){
 
         res.send({id:obj[0].id, name:obj[0].name, visitCount:0,	shortenedUrls:[]}).status(200)
     } catch (error) {
-        console.log(error)
         res.sendStatus(400)
     }
 

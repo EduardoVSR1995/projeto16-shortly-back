@@ -19,10 +19,10 @@ export default async function(req, res){
         if(rows.length===0) return res.sendStatus(401);
 
         const obj = await userRepository.insert(`shortens( url , "shortUrl", "visitCount")`, [url, shortUrl, 0])
-
-        await userRepository.insert(`"usersShortens"( "shortensId" , "usersId")`, [obj.rows[0].id ,rows[0].id])
-
-        res.send({shortUrl:shortUrl})   
+        
+        const i =  await userRepository.insert(`"usersShortens"( "shortensId" , "usersId")`, [obj.rows[0].id ,rows[0].usersId])
+        
+        res.send({shortUrl:shortUrl}).status(201)   
     
     } catch (error) {
         res.sendStatus(400);
