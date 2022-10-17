@@ -9,9 +9,11 @@ export default async function (req, res) {
 
         if(user.length===0) return res.sendStatus(401);
         
-        const { rows } = await userRepositoy.verifiIten(user[0].id, id)
+        const { rows } = await userRepositoy.verifiIten(user[0].usersId, id)
 
         const item = await userRepositoy.getItem("shortens", "id", id, true)
+
+        console.log(rows, user)
 
         if(item.length===0 && rows.length===0) return res.sendStatus(404);
 
