@@ -8,15 +8,18 @@ export default async function(req, res){
         
         const obj = await userRepository.getItem("shortens", "shortUrl", shortUrl, true)
         
+        
         if(obj.length===0){ 
             res.sendStatus(404)
             return 
         };
 
         await userRepository.updateIten("shortens", "visitCount", obj[0].visitCount+1 , obj[0].id )
+
+        console.log(obj , shortUrl)
+
+        res.redirect(obj[0].url);
         
-        res.status(200).redirect(obj[0].url);
-    
     } catch (error) {
         console.log(error)
 
